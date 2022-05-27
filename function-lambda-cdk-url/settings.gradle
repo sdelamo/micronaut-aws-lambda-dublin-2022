@@ -1,0 +1,5 @@
+
+rootProject.name="function-lambda-cdk-url"
+
+include("app")
+include("infra")

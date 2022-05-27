@@ -1,0 +1,5 @@
+
+rootProject.name="function-graalvm"
+
+include("app")
+include("infra")

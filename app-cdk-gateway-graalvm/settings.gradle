@@ -1,0 +1,5 @@
+
+rootProject.name="app-cdk-gateway-graalvm"
+
+include("app")
+include("infra")

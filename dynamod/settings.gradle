@@ -1,0 +1,5 @@
+
+rootProject.name="dynamod"
+
+include("app")
+include("infra")

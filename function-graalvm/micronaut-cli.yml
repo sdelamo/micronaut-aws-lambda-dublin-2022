@@ -1,0 +1,6 @@
+applicationType: function
+defaultPackage: function.graalvm
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [amazon-api-gateway, annotation-api, app-name, aws-cdk, aws-lambda, aws-lambda-custom-runtime, graalvm, gradle, http-client, jackson-databind, java, junit, logback, micronaut-build, readme, shade, yaml]
