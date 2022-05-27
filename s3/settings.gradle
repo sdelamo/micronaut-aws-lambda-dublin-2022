@@ -1,0 +1,5 @@
+
+rootProject.name="s3"
+
+include("app")
+include("infra")

@@ -1,0 +1,22 @@
+micronaut:
+  application:
+    name: cognito
+  security:
+    authentication: idtoken
+---
+micronaut:
+  security:
+    oauth2:
+      clients:
+        default:
+          client-id: '7mfu9gmlh926dtj60re1jcvsbi'
+          client-secret: '7una4clmpfoiu9bfahpen4gil5hr7f2scjjb5phbs2q7hll4t89'
+          openid:
+            issuer: https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_MQzm5cvdK/
+---
+micronaut:
+  security:
+    redirect:
+      login-success: '/prod'
+      login-failure: '/prod'
+      logout: '/prod'

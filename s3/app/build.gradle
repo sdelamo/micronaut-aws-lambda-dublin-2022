@@ -13,18 +13,14 @@ repositories {
 dependencies {
     implementation("com.amazonaws:aws-lambda-java-events:3.11.0")
     implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("io.micronaut.aws:micronaut-aws-sdk-v2")
     implementation("jakarta.annotation:jakarta.annotation-api")
-    implementation("software.amazon.awssdk:dynamodb")
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
-    implementation 'com.amirkhawaja:ksuid:1.0.0'
+
     implementation("io.micronaut.aws:micronaut-function-aws")
 
     testImplementation("io.micronaut:micronaut-http-client")
-    
-    implementation platform("com.amazonaws:aws-xray-recorder-sdk-bom:2.11.0")
-    implementation "com.amazonaws:aws-xray-recorder-sdk-aws-sdk-v2"
+
 }
 
 

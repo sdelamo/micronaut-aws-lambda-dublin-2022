@@ -1,0 +1,9 @@
+micronaut:
+  security:
+    oauth2:
+      clients:
+        default:
+          client-id: ${OAUTH_CLIENT_ID:XXX}
+          client-secret: ${OAUTH_CLIENT_SECRET:YYY}
+          openid:
+            issuer: https://cognito-idp.${COGNITO_REGION:us-east-1}.amazonaws.com/${COGNITO_POOL_ID:ZZZ}/

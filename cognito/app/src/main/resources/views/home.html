@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<h2 th:if="${security}">username: <span th:text="${security.attributes.get('email')}"></span></h2>
+<h2 th:unless="${security}">username: Anonymous</h2>
+
+<nav>
+    <ul>
+        <li th:unless="${security}"><a href="https://h6unj667qd.execute-api.eu-west-1.amazonaws.com/prod/oauth/login/default">Enter</a></li>
+        <li th:if="${security}"><a href="https://h6unj667qd.execute-api.eu-west-1.amazonaws.com/prod/oauth/logout">Logout</a></li>
+    </ul>
+</nav>
+</body>
+</html>

@@ -1,6 +1,6 @@
 plugins {
-    id("io.micronaut.library") version "3.4.0"
     id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.micronaut.application") version "3.4.0"
 }
 
 version = "0.1"
@@ -11,28 +11,29 @@ repositories {
 }
 
 dependencies {
-    implementation("com.amazonaws:aws-lambda-java-events:3.11.0")
+    annotationProcessor("io.micronaut.security:micronaut-security-annotations")
     implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("io.micronaut.aws:micronaut-aws-sdk-v2")
+    implementation("io.micronaut.security:micronaut-security-jwt")
+    implementation("io.micronaut.security:micronaut-security-oauth2")
     implementation("jakarta.annotation:jakarta.annotation-api")
-    implementation("software.amazon.awssdk:dynamodb")
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
-    implementation 'com.amirkhawaja:ksuid:1.0.0'
-    implementation("io.micronaut.aws:micronaut-function-aws")
 
     testImplementation("io.micronaut:micronaut-http-client")
-    
-    implementation platform("com.amazonaws:aws-xray-recorder-sdk-bom:2.11.0")
-    implementation "com.amazonaws:aws-xray-recorder-sdk-aws-sdk-v2"
+    implementation("io.micronaut.views:micronaut-views-thymeleaf")
+
 }
 
 
+application {
+    mainClass.set("example.Application")
+}
 java {
     sourceCompatibility = JavaVersion.toVersion("11")
     targetCompatibility = JavaVersion.toVersion("11")
 }
 
+graalvmNative.toolchainDetection = false
 micronaut {
     runtime("lambda_java")
     testRuntime("junit5")
@@ -43,7 +44,13 @@ micronaut {
 }
 
 
-tasks.named("assemble") {
-    dependsOn(":shadowJar")
+tasks.named("dockerfileNative") {
+    args(
+        "-XX:MaximumHeapSizePercent=80",
+        "-Dio.netty.allocator.numDirectArenas=0",
+        "-Dio.netty.noPreferDirect=true"
+    )
 }
+
+
 
